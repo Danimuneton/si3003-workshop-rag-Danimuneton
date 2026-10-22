@@ -144,18 +144,24 @@ fuente con su score coseno (`- Título · score 0.xxx`), ordenadas de mayor a me
 
 ## B1 · Ejecuta el RAG de papers y evalúa con el ground truth
 
-**Qué hice:** ejecuté el notebook `03` (partes 0–4) y el quiz `QUIZ_B1`. Para
-cada pregunta evalué: ¿correcta? ¿paper correcto? ¿completa?
+**Qué hice:** ejecuté el notebook `03` (partes 0–5) con las 5 preguntas del quiz
+original + la pregunta bonus. Para cada una evalué: ¿correcta? ¿paper correcto?
+¿completa? (comparando con el bloque `<details>` de ground truth de cada celda).
 
-**Evidencia:** ⟨PEGAR la salida del bloque `QUIZ_B1`⟩
+> Referencia de la ejecución base del profesor: Attention → 55 chunks, RAG → 95
+> chunks, total 150; dimensión de embeddings = 2048. Con mi tercer paper (HNSW,
+> C2) el total será mayor — ⟨anota tu total real⟩.
 
-| # | Pregunta | Ground truth | Correcta | Paper correcto | Completa |
+**Evidencia:** ⟨PEGAR la salida de las celdas q1–q5 y la bonus⟩
+
+| # | Pregunta (quiz original) | Ground truth resumido | Correcta | Paper correcto | Completa |
 |---|---|---|:--:|:--:|:--:|
-| 1 | nº de attention heads | 8 (d_k=d_v=64) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
-| 2 | variantes de RAG | RAG-Sequence / RAG-Token | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
-| 3 | d_model base | 512 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
-| 4 | retriever de RAG | DPR sobre Wikipedia | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
-| 5 | nº de capas N | 6 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| 1 | BLEU del Transformer (big) en WMT14 EN–DE | 28.4 BLEU (Attention) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| 2 | ¿Cómo combina RAG memoria paramétrica y no paramétrica? | BART + índice Wikipedia vía DPR, end-to-end (RAG) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| 3 | Propósito del factor 1/√dk | Evitar gradientes diminutos en softmax (Attention) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| 4 | Dos variantes de RAG | RAG-Sequence vs RAG-Token (RAG) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| 5 | nº de heads y dims por head | h=8, dk=dv=64 (Attention) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| Bonus | generador de RAG y su base | BART-large, basado en Transformer (ambos papers) | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
 
 ## B2 · Experimentos con chunk_size, k y score_threshold
 
@@ -194,13 +200,13 @@ la pregunta, así que responde en español citando el paper en inglés.
 
 ## B5 · Escribe tu propio quiz con ground truth
 
-**Qué hice:** escribí `MI_QUIZ` (5 preguntas: residual+layernorm, escalado
-1/√d_k, componentes paramétrico/no paramétrico de RAG, RAG-Token vs
-RAG-Sequence, problema que RAG mitiga) + una pregunta **bonus que cruza ambos
-papers** (qué arquitectura usa el generador de RAG y si se basa en Transformer),
-que además imprime las fuentes recuperadas.
+**Qué hice:** en el notebook 03 añadí `MI_QUIZ` con 5 preguntas propias
+(residual+layernorm, componentes paramétrico/no paramétrico de RAG, RAG-Token vs
+RAG-Sequence, nº de capas N=6, problema que RAG mitiga), cada una con su ground
+truth, más una pregunta **bonus que cruza ambos papers** (`BONUS_B5`) que además
+imprime las fuentes recuperadas.
 
-**Evidencia:** ⟨PEGAR salida de `MI_QUIZ` y de la pregunta `BONUS` con sus fuentes⟩
+**Evidencia:** ⟨PEGAR salida del bloque `MI_QUIZ` y de `BONUS_B5` con sus fuentes⟩
 
 ---
 
@@ -208,28 +214,41 @@ que además imprime las fuentes recuperadas.
 
 ## R1 · Reflexión final con tus datos
 
-1. **¿Cómo afecta `score_threshold` al comportamiento del RAG?**
-   Un umbral alto hace el sistema más conservador: recupera menos chunks y el
-   modelo responde "no sé" con más frecuencia (mejor precisión, peor cobertura).
-   Un umbral bajo recupera casi siempre algo, a riesgo de traer ruido.
-   ⟨AJUSTAR con los números que observaste⟩
+Respondo las cinco preguntas de la sección «Reflexión final» del notebook 03:
 
-2. **¿Qué pasó al cambiar `chunk_size`?**
-   ⟨PEGAR tu observación a partir de la tabla de C4: qué tamaño dio mejor hit@k
-   y por qué crees que ocurrió⟩
+1. **¿Qué ocurrió cuando el contexto no contenía información suficiente? ¿El
+   modelo reconoció la limitación o inventó una respuesta?**
+   Con el prompt de la Parte 4 (que exige reconocer la falta de evidencia), en
+   las preguntas trampa (B3) el modelo dijo que los papers no contienen esa
+   información en vez de inventar. ⟨confirmar con tu salida real de B3⟩
 
-3. **¿El modelo admite cuándo no sabe?**
-   Con el prompt estricto (B3), sí: reconoció la falta de evidencia en las
-   preguntas trampa. Sin esa instrucción tiende a especular. ⟨confirmar con tu
-   salida real⟩
+2. **¿Qué fragmentos recuperó para la pregunta bonus? ¿Aparecieron ambos
+   papers?**
+   ⟨PEGAR la lista "Fuentes recuperadas" de la celda bonus: idealmente aparecen
+   chunks del paper de RAG (BART) y del de Attention (Transformer)⟩
 
-4. **¿MMR aportó diversidad frente a la similitud pura (C5)?**
-   ⟨PEGAR qué diferencias viste en los chunks recuperados: ¿MMR trajo fuentes de
-   más de un paper o secciones distintas?⟩
+3. **¿Qué efecto tendría modificar `chunk_size`, `chunk_overlap`, `k` o
+   `score_threshold`?**
+   Según mis experimentos B2/C4: chunks pequeños (400) fragmentan ideas y pueden
+   bajar el recall; chunks grandes (1500) dan contexto pero diluyen la relevancia.
+   Subir `k` aumenta cobertura (y ruido); subir `score_threshold` hace al sistema
+   más estricto y propenso a responder "no sé". ⟨ajustar con tu tabla de hit@k⟩
 
-5. **¿Qué ganaste persistiendo el índice en disco (C6)?**
-   Evité recomputar embeddings en cada reinicio; el segundo arranque reutiliza la
-   colección y responde casi al instante. ⟨PEGAR los dos tiempos medidos⟩
+4. **¿Por qué conviene separar el modelo de embeddings del modelo generativo?**
+   Son tareas distintas: el de embeddings optimiza representar significado para
+   recuperar (barato, se ejecuta sobre todo el corpus y en cada consulta); el
+   generativo optimiza redactar la respuesta (caro, solo sobre el contexto ya
+   recuperado). Separarlos permite elegir el mejor/más barato para cada rol,
+   cachear embeddings y escalarlos de forma independiente.
+
+5. **¿Qué cambiarías para llevar este prototipo a producción?**
+   - **Persistencia:** Qdrant en disco o servidor en vez de `:memory:` (ver C6).
+   - **Control de acceso:** autenticación, API keys por usuario, filtros por
+     permisos sobre la metadata.
+   - **Evaluación:** suite automática de `hit@k`/`faithfulness` en CI (ver C4).
+   - **Observabilidad:** logging de consultas, latencias, scores y trazas (LCEL).
+   - **Costos:** caché de embeddings/respuestas, control de `max_tokens`, batching
+     y límites de rate para no exceder cuota de NVIDIA NIM.
 
 ---
 
