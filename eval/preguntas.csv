@@ -1,3 +1,11 @@
 id,pregunta,fuente_esperada,palabra_clave,respuesta_esperada
 1,How many attention heads does the base Transformer use?,attention_paper.pdf,8,h = 8 heads con dk = dv = 64
 2,What are the two RAG model variants?,rag_paper.pdf,RAG-Token,RAG-Sequence y RAG-Token
+3,What is the dimension of the model (d_model) in the base Transformer?,attention_paper.pdf,512,d_model = 512 en el modelo base
+4,What positional information mechanism does the Transformer use?,attention_paper.pdf,positional,Codificaciones posicionales sinusoidales sumadas a los embeddings
+5,Which dataset size (WMT) is used for English-to-German translation?,attention_paper.pdf,WMT,WMT 2014 English-German con ~4.5 millones de pares de oraciones
+6,What retriever does the RAG model use to fetch documents?,rag_paper.pdf,DPR,Un recuperador denso de pasajes (DPR) sobre indices de Wikipedia
+7,What knowledge source does RAG retrieve from?,rag_paper.pdf,Wikipedia,Un indice denso de Wikipedia como memoria no parametrica
+8,What is the formula for scaled dot-product attention?,attention_paper.pdf,softmax,softmax(QK^T / sqrt(d_k)) V
+9,On which task does RAG set a new state of the art mentioned in the abstract?,rag_paper.pdf,open-domain,Tareas de question answering de dominio abierto
+10,How many encoder and decoder layers does the base Transformer have?,attention_paper.pdf,6,N = 6 capas identicas en el encoder y en el decoder

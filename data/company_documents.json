@@ -1,0 +1,74 @@
+[
+  {
+    "id": "nebula_pricing_001",
+    "title": "NebulaCRM — Planes y precios",
+    "content": "NebulaCRM se ofrece en tres planes. El plan Starter cuesta $12 por usuario al mes e incluye gestion de contactos, hasta 2 usuarios y 5 GB de almacenamiento. El plan Business cuesta $29 por usuario al mes, agrega automatizaciones de ventas, informes avanzados y 50 GB de almacenamiento. El plan Enterprise cuesta $59 por usuario al mes con compromiso anual, e incluye SSO, API ilimitada, gestor de cuenta dedicado y almacenamiento ilimitado. Todos los planes ofrecen una prueba gratuita de 14 dias sin tarjeta de credito.",
+    "metadata": {
+      "department": "ventas",
+      "type": "pricing"
+    }
+  },
+  {
+    "id": "rrhh_remoto_001",
+    "title": "Politica de trabajo remoto",
+    "content": "Los empleados pueden trabajar de forma remota hasta 3 dias por semana, siempre con la aprobacion previa de su jefe directo. Los roles de atencion presencial a clientes estan excluidos de esta politica. El trabajo remoto desde el extranjero por mas de 30 dias requiere autorizacion del area legal y de recursos humanos por motivos fiscales. La empresa entrega un bono unico de $300 para equipar el espacio de trabajo en casa.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "finanzas_reembolsos_001",
+    "title": "Politica de reembolsos de gastos",
+    "content": "Los reembolsos de gastos menores o iguales a $100 se aprueban automaticamente al adjuntar la factura. Los reembolsos superiores a $100 requieren aprobacion del supervisor directo y se procesan en un plazo de 3 a 5 dias habiles. Los gastos de representacion con clientes necesitan una nota explicativa. No se reembolsan multas de transito ni gastos personales. El plazo maximo para reportar un gasto es de 60 dias desde su realizacion.",
+    "metadata": {
+      "department": "finanzas",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "rrhh_onboarding_001",
+    "title": "Proceso de onboarding",
+    "content": "Durante la primera semana de onboarding, cada nuevo empleado debe completar modulos obligatorios de seguridad de la informacion, cumplimiento normativo y cultura organizacional. En la segunda semana se asigna un mentor y se definen los objetivos de los primeros 90 dias. El equipo de TI entrega el equipo portatil y las credenciales el primer dia. La evaluacion de periodo de prueba se realiza al cumplir 3 meses.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "process"
+    }
+  },
+  {
+    "id": "soporte_sla_001",
+    "title": "Acuerdos de nivel de servicio de soporte",
+    "content": "Los tickets de severidad critica (sistema caido) se atienden en menos de 1 hora y tienen soporte 24/7. Los tickets de severidad alta se responden en menos de 4 horas habiles. Los tickets normales se responden en un maximo de 24 horas habiles. El plan Enterprise incluye una linea telefonica prioritaria. La disponibilidad garantizada del servicio es del 99.9 por ciento mensual.",
+    "metadata": {
+      "department": "soporte",
+      "type": "sla"
+    }
+  },
+  {
+    "id": "seguridad_passwords_001",
+    "title": "Politica de contrasenas y acceso",
+    "content": "Las contrasenas corporativas deben tener al menos 12 caracteres, combinar mayusculas, minusculas, numeros y simbolos, y renovarse cada 90 dias. El segundo factor de autenticacion (MFA) es obligatorio para todos los servicios internos. Las cuentas se bloquean tras 5 intentos fallidos. Esta prohibido compartir credenciales entre companeros; cada acceso debe ser nominal y auditable.",
+    "metadata": {
+      "department": "seguridad",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "finanzas_viajes_001",
+    "title": "Politica de viajes corporativos",
+    "content": "Los vuelos nacionales se reservan en clase economica. Los vuelos internacionales de mas de 8 horas pueden reservarse en clase ejecutiva con aprobacion de direccion. El viatico diario para alimentacion es de $55 en viajes nacionales y $75 en viajes internacionales. El alojamiento debe reservarse a traves del portal corporativo de viajes para obtener tarifas negociadas. Los taxis y transporte se reembolsan contra factura.",
+    "metadata": {
+      "department": "finanzas",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "producto_integraciones_001",
+    "title": "NebulaCRM — Integraciones disponibles",
+    "content": "NebulaCRM se integra de forma nativa con Gmail, Outlook, Slack, Google Calendar y Zapier. La integracion con sistemas de facturacion esta disponible solo en los planes Business y Enterprise. Existe una API REST documentada con un limite de 1000 peticiones por minuto en el plan Enterprise y 100 peticiones por minuto en el plan Business. Las integraciones personalizadas se cotizan con el equipo de soluciones.",
+    "metadata": {
+      "department": "producto",
+      "type": "reference"
+    }
+  }
+]

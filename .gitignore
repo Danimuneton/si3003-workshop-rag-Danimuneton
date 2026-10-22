@@ -7,6 +7,7 @@ venv/
 # Datos temporales de los notebooks
 papers/*.pdf
 qdrant_data/
+qdrant_papers/
 .ipynb_checkpoints/
 __pycache__/
 *.pyc
